@@ -1,0 +1,268 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Tile/Tile.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Pawn/Pawn.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Main/Main.gd" type="Script" id=3]
+
+[node name="Main" type="Node"]
+script = ExtResource( 3 )
+
+[node name="1-1" parent="." instance=ExtResource( 1 )]
+position = Vector2( 224, 96 )
+opposite_tile = "1-15"
+
+[node name="1-2" parent="." instance=ExtResource( 1 )]
+position = Vector2( 288, 96 )
+opposite_tile = "1-21"
+
+[node name="1-3" parent="." instance=ExtResource( 1 )]
+position = Vector2( 352, 96 )
+opposite_tile = "1-20"
+spawn = "Blue"
+
+[node name="1-4" parent="." instance=ExtResource( 1 )]
+position = Vector2( 416, 96 )
+opposite_tile = "1-19"
+spawn = "Blue"
+
+[node name="1-5" parent="." instance=ExtResource( 1 )]
+position = Vector2( 480, 96 )
+opposite_tile = "1-18"
+spawn = "Blue"
+
+[node name="1-6" parent="." instance=ExtResource( 1 )]
+position = Vector2( 544, 96 )
+opposite_tile = "1-17"
+spawn = "Blue"
+
+[node name="1-7" parent="." instance=ExtResource( 1 )]
+position = Vector2( 608, 96 )
+opposite_tile = "1-16"
+
+[node name="1-8" parent="." instance=ExtResource( 1 )]
+position = Vector2( 672, 96 )
+opposite_tile = "1-22"
+
+[node name="1-9" parent="." instance=ExtResource( 1 )]
+position = Vector2( 672, 160 )
+opposite_tile = "1-28"
+
+[node name="1-10" parent="." instance=ExtResource( 1 )]
+position = Vector2( 672, 224 )
+opposite_tile = "1-27"
+spawn = "Red"
+
+[node name="1-11" parent="." instance=ExtResource( 1 )]
+position = Vector2( 672, 288 )
+opposite_tile = "1-26"
+spawn = "Red"
+
+[node name="1-12" parent="." instance=ExtResource( 1 )]
+position = Vector2( 672, 352 )
+opposite_tile = "1-25"
+spawn = "Red"
+
+[node name="1-13" parent="." instance=ExtResource( 1 )]
+position = Vector2( 672, 416 )
+opposite_tile = "1-24"
+spawn = "Red"
+
+[node name="1-14" parent="." instance=ExtResource( 1 )]
+position = Vector2( 672, 480 )
+opposite_tile = "1-23"
+
+[node name="1-15" parent="." instance=ExtResource( 1 )]
+position = Vector2( 672, 544 )
+
+[node name="1-16" parent="." instance=ExtResource( 1 )]
+position = Vector2( 608, 544 )
+opposite_tile = "1-7"
+
+[node name="1-17" parent="." instance=ExtResource( 1 )]
+position = Vector2( 544, 544 )
+opposite_tile = "1-6"
+spawn = "Yellow"
+
+[node name="1-18" parent="." instance=ExtResource( 1 )]
+position = Vector2( 480, 544 )
+opposite_tile = "1-5"
+spawn = "Yellow"
+
+[node name="1-19" parent="." instance=ExtResource( 1 )]
+position = Vector2( 416, 544 )
+opposite_tile = "1-4"
+spawn = "Yellow"
+
+[node name="1-20" parent="." instance=ExtResource( 1 )]
+position = Vector2( 352, 544 )
+opposite_tile = "1-3"
+spawn = "Yellow"
+
+[node name="1-21" parent="." instance=ExtResource( 1 )]
+position = Vector2( 288, 544 )
+opposite_tile = "1-2"
+
+[node name="1-22" parent="." instance=ExtResource( 1 )]
+position = Vector2( 224, 544 )
+opposite_tile = "1-8"
+
+[node name="1-23" parent="." instance=ExtResource( 1 )]
+position = Vector2( 224, 480 )
+opposite_tile = "1-14"
+
+[node name="1-24" parent="." instance=ExtResource( 1 )]
+position = Vector2( 224, 416 )
+opposite_tile = "1-13"
+spawn = "Green"
+
+[node name="1-25" parent="." instance=ExtResource( 1 )]
+position = Vector2( 224, 352 )
+opposite_tile = "1-12"
+spawn = "Green"
+
+[node name="1-26" parent="." instance=ExtResource( 1 )]
+position = Vector2( 224, 288 )
+opposite_tile = "1-11"
+spawn = "Green"
+
+[node name="1-27" parent="." instance=ExtResource( 1 )]
+position = Vector2( 224, 224 )
+opposite_tile = "1-10"
+spawn = "Green"
+
+[node name="1-28" parent="." instance=ExtResource( 1 )]
+position = Vector2( 224, 160 )
+opposite_tile = "1-9"
+
+[node name="Blue1" parent="." instance=ExtResource( 2 )]
+position = Vector2( 352, 96 )
+color = "Blue"
+
+[node name="Blue2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 416, 96 )
+color = "Blue"
+
+[node name="Blue3" parent="." instance=ExtResource( 2 )]
+position = Vector2( 480, 96 )
+color = "Blue"
+
+[node name="Blue4" parent="." instance=ExtResource( 2 )]
+position = Vector2( 544, 96 )
+color = "Blue"
+
+[node name="Red1" parent="." instance=ExtResource( 2 )]
+position = Vector2( 672, 224 )
+color = "Red"
+
+[node name="Red2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 672, 288 )
+color = "Red"
+
+[node name="Red3" parent="." instance=ExtResource( 2 )]
+position = Vector2( 672, 352 )
+color = "Red"
+
+[node name="Red4" parent="." instance=ExtResource( 2 )]
+position = Vector2( 672, 416 )
+color = "Red"
+
+[node name="Yellow1" parent="." instance=ExtResource( 2 )]
+position = Vector2( 544, 544 )
+color = "Yellow"
+
+[node name="Yellow2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 480, 544 )
+color = "Yellow"
+
+[node name="Yellow3" parent="." instance=ExtResource( 2 )]
+position = Vector2( 416, 544 )
+color = "Yellow"
+
+[node name="Yellow4" parent="." instance=ExtResource( 2 )]
+position = Vector2( 352, 544 )
+color = "Yellow"
+
+[node name="Green1" parent="." instance=ExtResource( 2 )]
+position = Vector2( 224, 416 )
+color = "Green"
+
+[node name="Green2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 224, 352 )
+color = "Green"
+
+[node name="Green3" parent="." instance=ExtResource( 2 )]
+position = Vector2( 224, 288 )
+color = "Green"
+
+[node name="Green4" parent="." instance=ExtResource( 2 )]
+position = Vector2( 224, 224 )
+color = "Green"
+
+[node name="TurnTimer" type="Timer" parent="."]
+
+[node name="RollDisplay" type="Label" parent="."]
+margin_left = 200.0
+margin_top = 48.0
+margin_right = 352.0
+margin_bottom = 64.0
+text = "Roll"
+
+[node name="RollButton" type="Button" parent="."]
+margin_left = 744.0
+margin_top = 112.0
+margin_right = 936.0
+margin_bottom = 192.0
+text = "Click to Roll"
+
+[node name="TurnDisplay" type="Label" parent="."]
+margin_left = 376.0
+margin_top = 48.0
+margin_right = 416.0
+margin_bottom = 62.0
+text = "Blue"
+
+[connection signal="clicked" from="1-1" to="." method="_on_Tile_clicked"]
+[connection signal="clicked" from="1-2" to="." method="_on_Tile_clicked"]
+[connection signal="clicked" from="1-3" to="." method="_on_Tile_clicked"]
+[connection signal="clicked" from="1-4" to="." method="_on_Tile_clicked"]
+[connection signal="clicked" from="1-5" to="." method="_on_Tile_clicked"]
+[connection signal="clicked" from="1-6" to="." method="_on_Tile_clicked"]
+[connection signal="clicked" from="1-7" to="." method="_on_Tile_clicked"]
+[connection signal="clicked" from="1-8" to="." method="_on_Tile_clicked"]
+[connection signal="clicked" from="1-9" to="." method="_on_Tile_clicked"]
+[connection signal="clicked" from="1-10" to="." method="_on_Tile_clicked"]
+[connection signal="clicked" from="1-11" to="." method="_on_Tile_clicked"]
+[connection signal="clicked" from="1-12" to="." method="_on_Tile_clicked"]
+[connection signal="clicked" from="1-13" to="." method="_on_Tile_clicked"]
+[connection signal="clicked" from="1-14" to="." method="_on_Tile_clicked"]
+[connection signal="clicked" from="1-15" to="." method="_on_Tile_clicked"]
+[connection signal="clicked" from="1-16" to="." method="_on_Tile_clicked"]
+[connection signal="clicked" from="1-17" to="." method="_on_Tile_clicked"]
+[connection signal="clicked" from="1-18" to="." method="_on_Tile_clicked"]
+[connection signal="clicked" from="1-19" to="." method="_on_Tile_clicked"]
+[connection signal="clicked" from="1-20" to="." method="_on_Tile_clicked"]
+[connection signal="clicked" from="1-21" to="." method="_on_Tile_clicked"]
+[connection signal="clicked" from="1-22" to="." method="_on_Tile_clicked"]
+[connection signal="clicked" from="1-23" to="." method="_on_Tile_clicked"]
+[connection signal="clicked" from="1-24" to="." method="_on_Tile_clicked"]
+[connection signal="clicked" from="1-25" to="." method="_on_Tile_clicked"]
+[connection signal="clicked" from="1-26" to="." method="_on_Tile_clicked"]
+[connection signal="clicked" from="1-27" to="." method="_on_Tile_clicked"]
+[connection signal="clicked" from="1-28" to="." method="_on_Tile_clicked"]
+[connection signal="clicked" from="Blue1" to="." method="_on_Pawn_clicked"]
+[connection signal="clicked" from="Blue2" to="." method="_on_Pawn_clicked"]
+[connection signal="clicked" from="Blue3" to="." method="_on_Pawn_clicked"]
+[connection signal="clicked" from="Blue4" to="." method="_on_Pawn_clicked"]
+[connection signal="clicked" from="Red1" to="." method="_on_Pawn_clicked"]
+[connection signal="clicked" from="Red2" to="." method="_on_Pawn_clicked"]
+[connection signal="clicked" from="Red3" to="." method="_on_Pawn_clicked"]
+[connection signal="clicked" from="Red4" to="." method="_on_Pawn_clicked"]
+[connection signal="clicked" from="Yellow1" to="." method="_on_Pawn_clicked"]
+[connection signal="clicked" from="Yellow2" to="." method="_on_Pawn_clicked"]
+[connection signal="clicked" from="Yellow3" to="." method="_on_Pawn_clicked"]
+[connection signal="clicked" from="Yellow4" to="." method="_on_Pawn_clicked"]
+[connection signal="clicked" from="Green1" to="." method="_on_Pawn_clicked"]
+[connection signal="clicked" from="Green2" to="." method="_on_Pawn_clicked"]
+[connection signal="clicked" from="Green3" to="." method="_on_Pawn_clicked"]
+[connection signal="clicked" from="Green4" to="." method="_on_Pawn_clicked"]
+[connection signal="pressed" from="RollButton" to="." method="_on_RollButton_pressed"]

@@ -1,0 +1,48 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Pawn/Pawn.gd" type="Script" id=1]
+[ext_resource path="res://Assets/BluePawn.png" type="Texture" id=2]
+[ext_resource path="res://Assets/GreenPawn.png" type="Texture" id=3]
+[ext_resource path="res://Assets/YellowPawn.png" type="Texture" id=4]
+[ext_resource path="res://Assets/RedPawn.png" type="Texture" id=5]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 20.0
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "blue",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "green",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "red",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ) ],
+"loop": true,
+"name": "yellow",
+"speed": 5.0
+} ]
+
+[node name="Pawn" type="Area2D" groups=["all_pawns"]]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 2 )
+animation = "blue"
+
+[connection signal="input_event" from="." to="." method="_on_Pawn_input_event"]
