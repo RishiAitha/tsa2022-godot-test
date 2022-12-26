@@ -14,6 +14,7 @@ opposite_tile = "1-15"
 [node name="1-2" parent="." instance=ExtResource( 1 )]
 position = Vector2( 288, 96 )
 opposite_tile = "1-21"
+safe = false
 
 [node name="1-3" parent="." instance=ExtResource( 1 )]
 position = Vector2( 352, 96 )
@@ -38,6 +39,7 @@ spawn = "Blue"
 [node name="1-7" parent="." instance=ExtResource( 1 )]
 position = Vector2( 608, 96 )
 opposite_tile = "1-16"
+safe = false
 
 [node name="1-8" parent="." instance=ExtResource( 1 )]
 position = Vector2( 672, 96 )
@@ -46,6 +48,7 @@ opposite_tile = "1-22"
 [node name="1-9" parent="." instance=ExtResource( 1 )]
 position = Vector2( 672, 160 )
 opposite_tile = "1-28"
+safe = false
 
 [node name="1-10" parent="." instance=ExtResource( 1 )]
 position = Vector2( 672, 224 )
@@ -70,6 +73,7 @@ spawn = "Red"
 [node name="1-14" parent="." instance=ExtResource( 1 )]
 position = Vector2( 672, 480 )
 opposite_tile = "1-23"
+safe = false
 
 [node name="1-15" parent="." instance=ExtResource( 1 )]
 position = Vector2( 672, 544 )
@@ -77,6 +81,7 @@ position = Vector2( 672, 544 )
 [node name="1-16" parent="." instance=ExtResource( 1 )]
 position = Vector2( 608, 544 )
 opposite_tile = "1-7"
+safe = false
 
 [node name="1-17" parent="." instance=ExtResource( 1 )]
 position = Vector2( 544, 544 )
@@ -101,6 +106,7 @@ spawn = "Yellow"
 [node name="1-21" parent="." instance=ExtResource( 1 )]
 position = Vector2( 288, 544 )
 opposite_tile = "1-2"
+safe = false
 
 [node name="1-22" parent="." instance=ExtResource( 1 )]
 position = Vector2( 224, 544 )
@@ -109,6 +115,7 @@ opposite_tile = "1-8"
 [node name="1-23" parent="." instance=ExtResource( 1 )]
 position = Vector2( 224, 480 )
 opposite_tile = "1-14"
+safe = false
 
 [node name="1-24" parent="." instance=ExtResource( 1 )]
 position = Vector2( 224, 416 )
@@ -133,6 +140,199 @@ spawn = "Green"
 [node name="1-28" parent="." instance=ExtResource( 1 )]
 position = Vector2( 224, 160 )
 opposite_tile = "1-9"
+safe = false
+
+[node name="2-1" parent="." instance=ExtResource( 1 )]
+position = Vector2( 288, 160 )
+opposite_tile = "2-11"
+
+[node name="2-2" parent="." instance=ExtResource( 1 )]
+position = Vector2( 352, 160 )
+opposite_tile = "2-15"
+spawn = "Blue"
+safe = false
+
+[node name="2-3" parent="." instance=ExtResource( 1 )]
+position = Vector2( 416, 160 )
+opposite_tile = "2-14"
+spawn = "Blue"
+
+[node name="2-4" parent="." instance=ExtResource( 1 )]
+position = Vector2( 480, 160 )
+opposite_tile = "2-13"
+spawn = "Blue"
+
+[node name="2-5" parent="." instance=ExtResource( 1 )]
+position = Vector2( 544, 160 )
+opposite_tile = "2-12"
+spawn = "Blue"
+safe = false
+
+[node name="2-6" parent="." instance=ExtResource( 1 )]
+position = Vector2( 608, 160 )
+opposite_tile = "2-16"
+
+[node name="2-7" parent="." instance=ExtResource( 1 )]
+position = Vector2( 608, 224 )
+opposite_tile = "2-20"
+spawn = "Red"
+safe = false
+
+[node name="2-8" parent="." instance=ExtResource( 1 )]
+position = Vector2( 608, 288 )
+opposite_tile = "2-19"
+spawn = "Red"
+
+[node name="2-9" parent="." instance=ExtResource( 1 )]
+position = Vector2( 608, 352 )
+opposite_tile = "2-18"
+spawn = "Red"
+
+[node name="2-10" parent="." instance=ExtResource( 1 )]
+position = Vector2( 608, 416 )
+opposite_tile = "2-17"
+spawn = "Red"
+safe = false
+
+[node name="2-11" parent="." instance=ExtResource( 1 )]
+position = Vector2( 608, 480 )
+opposite_tile = "2-1"
+
+[node name="2-12" parent="." instance=ExtResource( 1 )]
+position = Vector2( 544, 480 )
+opposite_tile = "2-5"
+spawn = "Yellow"
+safe = false
+
+[node name="2-13" parent="." instance=ExtResource( 1 )]
+position = Vector2( 480, 480 )
+opposite_tile = "2-4"
+spawn = "Yellow"
+
+[node name="2-14" parent="." instance=ExtResource( 1 )]
+position = Vector2( 416, 480 )
+opposite_tile = "2-3"
+spawn = "Yellow"
+
+[node name="2-15" parent="." instance=ExtResource( 1 )]
+position = Vector2( 352, 480 )
+opposite_tile = "2-15"
+spawn = "Yellow"
+safe = false
+
+[node name="2-16" parent="." instance=ExtResource( 1 )]
+position = Vector2( 288, 480 )
+opposite_tile = "2-6"
+
+[node name="2-17" parent="." instance=ExtResource( 1 )]
+position = Vector2( 288, 416 )
+opposite_tile = "2-10"
+spawn = "Green"
+safe = false
+
+[node name="2-18" parent="." instance=ExtResource( 1 )]
+position = Vector2( 288, 352 )
+opposite_tile = "2-9"
+spawn = "Green"
+
+[node name="2-19" parent="." instance=ExtResource( 1 )]
+position = Vector2( 288, 288 )
+opposite_tile = "2-8"
+spawn = "Green"
+
+[node name="2-20" parent="." instance=ExtResource( 1 )]
+position = Vector2( 288, 224 )
+opposite_tile = "2-7"
+spawn = "Green"
+safe = false
+
+[node name="3-1" parent="." instance=ExtResource( 1 )]
+position = Vector2( 352, 224 )
+opposite_tile = "3-7"
+spawn = "Green-Blue"
+
+[node name="3-2" parent="." instance=ExtResource( 1 )]
+position = Vector2( 416, 224 )
+opposite_tile = "3-9"
+spawn = "Blue"
+safe = false
+
+[node name="3-3" parent="." instance=ExtResource( 1 )]
+position = Vector2( 480, 224 )
+opposite_tile = "3-8"
+spawn = "Blue"
+safe = false
+
+[node name="3-4" parent="." instance=ExtResource( 1 )]
+position = Vector2( 544, 224 )
+opposite_tile = "3-10"
+spawn = "Blue-Red"
+
+[node name="3-5" parent="." instance=ExtResource( 1 )]
+position = Vector2( 544, 288 )
+opposite_tile = "3-12"
+spawn = "Red"
+safe = false
+
+[node name="3-6" parent="." instance=ExtResource( 1 )]
+position = Vector2( 544, 352 )
+opposite_tile = "3-11"
+spawn = "Red"
+safe = false
+
+[node name="3-7" parent="." instance=ExtResource( 1 )]
+position = Vector2( 544, 416 )
+opposite_tile = "3-1"
+spawn = "Red-Yellow"
+
+[node name="3-8" parent="." instance=ExtResource( 1 )]
+position = Vector2( 480, 416 )
+opposite_tile = "3-3"
+spawn = "Yellow"
+safe = false
+
+[node name="3-9" parent="." instance=ExtResource( 1 )]
+position = Vector2( 416, 416 )
+opposite_tile = "3-2"
+spawn = "Yellow"
+safe = false
+
+[node name="3-10" parent="." instance=ExtResource( 1 )]
+position = Vector2( 352, 416 )
+opposite_tile = "3-4"
+spawn = "Yellow-Green"
+
+[node name="3-11" parent="." instance=ExtResource( 1 )]
+position = Vector2( 352, 352 )
+opposite_tile = "3-6"
+spawn = "Green"
+safe = false
+
+[node name="3-12" parent="." instance=ExtResource( 1 )]
+position = Vector2( 352, 288 )
+opposite_tile = "3-5"
+spawn = "Green"
+safe = false
+
+[node name="4-1" parent="." instance=ExtResource( 1 )]
+position = Vector2( 416, 288 )
+opposite_tile = "4-3"
+spawn = "everything"
+
+[node name="4-2" parent="." instance=ExtResource( 1 )]
+position = Vector2( 480, 288 )
+opposite_tile = "4-4"
+spawn = "everything"
+
+[node name="4-3" parent="." instance=ExtResource( 1 )]
+position = Vector2( 480, 352 )
+opposite_tile = "4-1"
+spawn = "everything"
+
+[node name="4-4" parent="." instance=ExtResource( 1 )]
+position = Vector2( 416, 352 )
+opposite_tile = "4-2"
+spawn = "everything"
 
 [node name="Blue1" parent="." instance=ExtResource( 2 )]
 position = Vector2( 352, 96 )
@@ -249,6 +449,42 @@ text = "Blue"
 [connection signal="clicked" from="1-26" to="." method="_on_Tile_clicked"]
 [connection signal="clicked" from="1-27" to="." method="_on_Tile_clicked"]
 [connection signal="clicked" from="1-28" to="." method="_on_Tile_clicked"]
+[connection signal="clicked" from="2-1" to="." method="_on_Tile_clicked"]
+[connection signal="clicked" from="2-2" to="." method="_on_Tile_clicked"]
+[connection signal="clicked" from="2-3" to="." method="_on_Tile_clicked"]
+[connection signal="clicked" from="2-4" to="." method="_on_Tile_clicked"]
+[connection signal="clicked" from="2-5" to="." method="_on_Tile_clicked"]
+[connection signal="clicked" from="2-6" to="." method="_on_Tile_clicked"]
+[connection signal="clicked" from="2-7" to="." method="_on_Tile_clicked"]
+[connection signal="clicked" from="2-8" to="." method="_on_Tile_clicked"]
+[connection signal="clicked" from="2-9" to="." method="_on_Tile_clicked"]
+[connection signal="clicked" from="2-10" to="." method="_on_Tile_clicked"]
+[connection signal="clicked" from="2-11" to="." method="_on_Tile_clicked"]
+[connection signal="clicked" from="2-12" to="." method="_on_Tile_clicked"]
+[connection signal="clicked" from="2-13" to="." method="_on_Tile_clicked"]
+[connection signal="clicked" from="2-14" to="." method="_on_Tile_clicked"]
+[connection signal="clicked" from="2-15" to="." method="_on_Tile_clicked"]
+[connection signal="clicked" from="2-16" to="." method="_on_Tile_clicked"]
+[connection signal="clicked" from="2-17" to="." method="_on_Tile_clicked"]
+[connection signal="clicked" from="2-18" to="." method="_on_Tile_clicked"]
+[connection signal="clicked" from="2-19" to="." method="_on_Tile_clicked"]
+[connection signal="clicked" from="2-20" to="." method="_on_Tile_clicked"]
+[connection signal="clicked" from="3-1" to="." method="_on_Tile_clicked"]
+[connection signal="clicked" from="3-2" to="." method="_on_Tile_clicked"]
+[connection signal="clicked" from="3-3" to="." method="_on_Tile_clicked"]
+[connection signal="clicked" from="3-4" to="." method="_on_Tile_clicked"]
+[connection signal="clicked" from="3-5" to="." method="_on_Tile_clicked"]
+[connection signal="clicked" from="3-6" to="." method="_on_Tile_clicked"]
+[connection signal="clicked" from="3-7" to="." method="_on_Tile_clicked"]
+[connection signal="clicked" from="3-8" to="." method="_on_Tile_clicked"]
+[connection signal="clicked" from="3-9" to="." method="_on_Tile_clicked"]
+[connection signal="clicked" from="3-10" to="." method="_on_Tile_clicked"]
+[connection signal="clicked" from="3-11" to="." method="_on_Tile_clicked"]
+[connection signal="clicked" from="3-12" to="." method="_on_Tile_clicked"]
+[connection signal="clicked" from="4-1" to="." method="_on_Tile_clicked"]
+[connection signal="clicked" from="4-2" to="." method="_on_Tile_clicked"]
+[connection signal="clicked" from="4-3" to="." method="_on_Tile_clicked"]
+[connection signal="clicked" from="4-4" to="." method="_on_Tile_clicked"]
 [connection signal="clicked" from="Blue1" to="." method="_on_Pawn_clicked"]
 [connection signal="clicked" from="Blue2" to="." method="_on_Pawn_clicked"]
 [connection signal="clicked" from="Blue3" to="." method="_on_Pawn_clicked"]

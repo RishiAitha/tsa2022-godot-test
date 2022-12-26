@@ -8,6 +8,7 @@ var roll
 var validTiles = ["", ""]
 var gameRound = 1
 var turnsPassed = 0
+var tileCount = 28
 
 var colors = ["Blue", "Red", "Yellow", "Green"]
 var currentIndex = 0
@@ -15,13 +16,20 @@ var currentPlayer = colors[currentIndex]
 
 func _ready():
 	randomize()
+	var tiles = get_tree().get_nodes_in_group("all_tiles")
+	for tile in tiles:
+		if (int(tile.name.get_slice("-", 0)) != 1):
+			tile.hide()
 
 func _process(delta):
 	$TurnDisplay.text = currentPlayer
 
 func _on_RollButton_pressed():
 	if (!rolled):
-		roll = randi() % 6 + 1
+		if (gameRound != 4):
+			roll = randi() % 6 + 1
+		else:
+			roll = randi() % 3 + 1
 		rolled = true
 		$RollDisplay.text = str(roll)
 
@@ -60,6 +68,34 @@ func _on_Tile_clicked(clickedTile):
 					kill(get_node(currentPawn), oppositePawn)
 				else:
 					revive(get_node(currentPawn))
+					
+			turnsPassed += 1
+			if (turnsPassed >= 4): # change to 12 after testing
+				turnsPassed = 0
+				gameRound += 1
+				tileCount -= 8
+				var tiles = get_tree().get_nodes_in_group("all_tiles")
+				for tile in tiles:
+					var unsafePawn = pawnCheck(tile.name)
+					
+					if (unsafePawn != null && !tile.safe && int(tile.name.get_slice("-", 0)) == (gameRound - 1)):
+						unsafePawn.queue_free()
+				
+				for tile in tiles:
+					if (int(tile.name.get_slice("-", 0)) == gameRound):
+						tile.show()
+					else:
+						tile.hide()
+				
+				var pawns = get_tree().get_nodes_in_group("all_pawns")
+				
+				for pawn in pawns:
+					if (!pawn.is_queued_for_deletion()):
+						for tile in tiles:
+							var tileRound = int(tile.name.get_slice("-", 0))
+							if (((pawn.color in tile.spawn) || tile.spawn == "everything") && pawnCheck(tile.name) == null && tileRound == gameRound):
+								pawn.position = tile.position
+								break;
 
 func _on_Pawn_clicked(clickedPawn):
 	if (get_node(clickedPawn).color == currentPlayer):
@@ -72,21 +108,21 @@ func _on_Pawn_clicked(clickedPawn):
 			var tileNum
 			var backNum
 			var forNum
-			if (gameRound == 1):
-				tileNum = int(currentTile.name.get_slice("-", 1))
-				if (tileNum - roll < 1):
-					backNum = 28 + (tileNum - roll)
-				else:
-					backNum = tileNum - roll
-				if (tileNum + roll > 28):
-					forNum = (tileNum + roll) - 28
-				else:
-					forNum = tileNum + roll
-				
-				var option1 = "1-" + str(backNum)
-				var option2 = "1-" + str(forNum)
-				
-				validTiles = [option1, option2]
+			
+			tileNum = int(currentTile.name.get_slice("-", 1))
+			if (tileNum - roll < 1):
+				backNum = tileCount + (tileNum - roll)
+			else:
+				backNum = tileNum - roll
+			if (tileNum + roll > tileCount):
+				forNum = (tileNum + roll) - tileCount
+			else:
+				forNum = tileNum + roll
+			
+			var option1 = str(gameRound) + "-" + str(backNum)
+			var option2 = str(gameRound) + "-" + str(forNum)
+			
+			validTiles = [option1, option2]
 
 func pawnCheck(tile):
 	var pawns = get_tree().get_nodes_in_group("all_pawns")
@@ -110,3 +146,5 @@ func kill(pawn, oppositePawn):
 func revive(pawn):
 	print_debug(pawn.name)
 
+func game_over(reason):
+	print_debug("Game Over!")
