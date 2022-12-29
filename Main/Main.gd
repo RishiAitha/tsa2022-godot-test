@@ -9,11 +9,12 @@
 #	||---------------------------------------------------------------||
 #	
 #	To-Do:
+#		Add comments to code
 #		Implement game over
 #		Start menu (maybe choose amount of players)
 #		Make functions and instance vars more organized, delete excess
 #		Sprites and animation
-#		Add comments to code
+#		Add comments to code (again, i'll probably forget)
 #		Lots of testing & bug fixes
 #		Change testing values to release values
 
