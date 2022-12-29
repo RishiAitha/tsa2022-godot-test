@@ -7,7 +7,7 @@
 [ext_resource path="res://Assets/RedPawn.png" type="Texture" id=5]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 20.0
+radius = 23.0217
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {

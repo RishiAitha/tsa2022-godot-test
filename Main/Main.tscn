@@ -6,6 +6,7 @@
 
 [node name="Main" type="Node"]
 script = ExtResource( 3 )
+pawn_scene = ExtResource( 2 )
 
 [node name="1-1" parent="." instance=ExtResource( 1 )]
 position = Vector2( 224, 96 )
@@ -398,7 +399,33 @@ color = "Green"
 position = Vector2( 224, 224 )
 color = "Green"
 
-[node name="TurnTimer" type="Timer" parent="."]
+[node name="RollButton" type="Button" parent="."]
+margin_left = 768.0
+margin_top = 64.0
+margin_right = 896.0
+margin_bottom = 128.0
+text = "Click to Roll"
+
+[node name="FlipButton" type="Button" parent="."]
+margin_left = 768.0
+margin_top = 192.0
+margin_right = 896.0
+margin_bottom = 256.0
+text = "Flip to Kill!"
+
+[node name="ReviveButton" type="Button" parent="."]
+margin_left = 768.0
+margin_top = 320.0
+margin_right = 896.0
+margin_bottom = 384.0
+text = "Flip to Revive!"
+
+[node name="PassButton" type="Button" parent="."]
+margin_left = 768.0
+margin_top = 448.0
+margin_right = 896.0
+margin_bottom = 512.0
+text = "Pass"
 
 [node name="RollDisplay" type="Label" parent="."]
 margin_left = 200.0
@@ -407,19 +434,19 @@ margin_right = 352.0
 margin_bottom = 64.0
 text = "Roll"
 
-[node name="RollButton" type="Button" parent="."]
-margin_left = 744.0
-margin_top = 112.0
-margin_right = 936.0
-margin_bottom = 192.0
-text = "Click to Roll"
-
 [node name="TurnDisplay" type="Label" parent="."]
 margin_left = 376.0
 margin_top = 48.0
 margin_right = 416.0
 margin_bottom = 62.0
-text = "Blue"
+text = "Turn"
+
+[node name="FlipDisplay" type="Label" parent="."]
+margin_left = 568.0
+margin_top = 48.0
+margin_right = 688.0
+margin_bottom = 72.0
+text = "Flip"
 
 [connection signal="clicked" from="1-1" to="." method="_on_Tile_clicked"]
 [connection signal="clicked" from="1-2" to="." method="_on_Tile_clicked"]
@@ -502,3 +529,6 @@ text = "Blue"
 [connection signal="clicked" from="Green3" to="." method="_on_Pawn_clicked"]
 [connection signal="clicked" from="Green4" to="." method="_on_Pawn_clicked"]
 [connection signal="pressed" from="RollButton" to="." method="_on_RollButton_pressed"]
+[connection signal="pressed" from="FlipButton" to="." method="_on_FlipButton_pressed"]
+[connection signal="pressed" from="ReviveButton" to="." method="_on_ReviveButton_pressed"]
+[connection signal="pressed" from="PassButton" to="." method="_on_PassButton_pressed"]

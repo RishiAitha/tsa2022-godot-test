@@ -16,6 +16,6 @@ func _ready():
 		if (color == "Green"):
 			$AnimatedSprite.animation = "green"
 
-func _on_Pawn_input_event(viewport, event, shape_idx):
+func _on_Pawn_input_event(_viewport, event, _shape_idx):
 	if (event is InputEventMouseButton && event.pressed):
 		emit_signal("clicked", self.name)
