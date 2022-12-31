@@ -3,7 +3,7 @@
 #	||---------------------------------------------------------------||
 #	
 #	Current Known Issues (commented where location of issue is known):
-#		"opposite tile check" to see whether or not to run flip to kill is failing and switching to revive for some unkown reason
+#		"opposite tile check" to see whether or not to run flip to kill is failing and switching to revive for some unknown reason
 #		(or could be an issue with displaying the wrong buttons)
 #	
 #	||---------------------------------------------------------------||
@@ -11,10 +11,10 @@
 #	To-Do:
 #		Add comments to code
 #		Implement game over
-#		Start menu (maybe choose amount of players)
+#		Start menu (maybe choosing amount of players)
 #		Make functions and instance vars more organized, delete excess
 #		Sprites and animation
-#		Add comments to code (again, i'll probably forget)
+#		Add comments to code (again, I'll probably forget)
 #		Lots of testing & bug fixes
 #		Change testing values to release values
 
@@ -252,14 +252,15 @@ func updateColors():
 	var colorsLeft = [false, false, false, false]
 	var pawns = get_tree().get_nodes_in_group("all_pawns")
 	for pawn in pawns:
-		if (pawn.color == "Blue"):
-			colorsLeft[0] = true
-		elif (pawn.color == "Red"):
-			colorsLeft[1] = true
-		elif (pawn.color == "Yellow"):
-			colorsLeft[2] = true
-		elif (pawn.color == "Green"):
-			colorsLeft[3] = true
+		if (!pawn.is_queued_for_deletion()):
+			if (pawn.color == "Blue"):
+				colorsLeft[0] = true
+			elif (pawn.color == "Red"):
+				colorsLeft[1] = true
+			elif (pawn.color == "Yellow"):
+				colorsLeft[2] = true
+			elif (pawn.color == "Green"):
+				colorsLeft[3] = true
 	
 	var i = 0
 	for color in colorsLeft:
