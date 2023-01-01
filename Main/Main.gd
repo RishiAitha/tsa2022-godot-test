@@ -5,6 +5,8 @@
 #	Current Known Issues (commented where location of issue is known):
 #		"opposite tile check" to see whether or not to run flip to kill is failing and switching to revive for some unknown reason
 #		(or could be an issue with displaying the wrong buttons)
+#		
+#		getting null currentPawn when swapping positions
 #	
 #	||---------------------------------------------------------------||
 #	
@@ -23,6 +25,7 @@ extends Node
 export(PackedScene) var pawn_scene
 
 signal buttonsFinished(choice)
+signal reviveFinished
 
 var moving
 var currentTile
@@ -102,7 +105,7 @@ func _on_Tile_clicked(clickedTile):
 			moving = false
 			
 			moved = true
-		elif (get_node(currentPawn).color != tilePawn.color):
+		elif (get_node(currentPawn).color != tilePawn.color): # null value sometimes for unknown reason
 			var temp_pos = tilePawn.position
 			tilePawn.position = get_node(currentPawn).position
 			get_node(currentPawn).position = temp_pos
@@ -121,6 +124,7 @@ func _on_Tile_clicked(clickedTile):
 					yield(self, "buttonsFinished")
 				else:
 					revive()
+					yield(self, "reviveFinished")
 			
 			updateColors()
 			
@@ -135,15 +139,6 @@ func _on_Tile_clicked(clickedTile):
 			if (currentPlayer == lastPlayer):
 				cycles += 1
 			
-			var increment = 0
-			while(currentPlayer == "dead" || increment == 0):
-				if (currentIndex < 3):
-					currentIndex += 1
-				else:
-					currentIndex = 0
-				currentPlayer = colors[currentIndex]
-				increment = 1
-			
 			if (cycles >= 1): # change to 3 after testing
 				yield(get_tree().create_timer(1), "timeout") # just to see what's happening easier
 				cycles = 0
@@ -155,6 +150,7 @@ func _on_Tile_clicked(clickedTile):
 					
 					if (unsafePawn != null && !tile.safe && int(tile.name.get_slice("-", 0)) == (gameRound - 1)):
 						unsafePawn.queue_free()
+				updateColors()
 				
 				for tile in tiles:
 					if (int(tile.name.get_slice("-", 0)) == gameRound):
@@ -171,7 +167,15 @@ func _on_Tile_clicked(clickedTile):
 							if (((pawn.color in tile.spawn) || tile.spawn == "everything") && pawnCheck(tile.name) == null && tileRound == gameRound):
 								pawn.position = tile.position
 								break
-				updateColors()
+			
+			var increment = 0
+			while(currentPlayer == "dead" || increment == 0):
+				if (currentIndex < 3):
+					currentIndex += 1
+				else:
+					currentIndex = 0
+				currentPlayer = colors[currentIndex]
+				increment = 1
 
 func revive():
 	var pawn = get_node(currentPawn)
@@ -183,8 +187,8 @@ func revive():
 			colorCount += 1
 	if (colorCount < 4):
 		$ReviveButton.show()
-		$PassButton.show()
 		yield(self, "buttonsFinished")
+	emit_signal("reviveFinished")
 
 func _on_FlipButton_pressed():
 	var flip = randi() % 2 + 1
@@ -267,6 +271,7 @@ func updateColors():
 		if (color == false):
 			colors[i] = "dead"
 		i += 1
+	print_debug(colors)
 
 func game_over(reason):
 	print_debug(str(reason))

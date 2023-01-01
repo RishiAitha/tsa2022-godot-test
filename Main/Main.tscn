@@ -415,16 +415,16 @@ text = "Flip to Kill!"
 
 [node name="ReviveButton" type="Button" parent="."]
 margin_left = 768.0
-margin_top = 320.0
+margin_top = 448.0
 margin_right = 896.0
-margin_bottom = 384.0
+margin_bottom = 512.0
 text = "Flip to Revive!"
 
 [node name="PassButton" type="Button" parent="."]
 margin_left = 768.0
-margin_top = 448.0
+margin_top = 320.0
 margin_right = 896.0
-margin_bottom = 512.0
+margin_bottom = 384.0
 text = "Pass"
 
 [node name="RollDisplay" type="Label" parent="."]
