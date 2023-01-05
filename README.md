@@ -13,7 +13,6 @@ Current Known Issues (commented where location of issue is known):
 
 To-Do:
 
- - Add comments to code
  - Implement game over
  - Start menu (maybe choosing amount of players)
  - Make functions and instance vars more organized, delete excess
