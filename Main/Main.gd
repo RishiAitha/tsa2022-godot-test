@@ -1,4 +1,4 @@
-#	TSA 2023 Video Game Design Project
+#	TSA 2023 Video Game Design Project: Flip or Skip
 #	
 #	||---------------------------------------------------------------||
 #	
@@ -56,7 +56,7 @@ func _ready(): # ryns when the main scene is initialized into the scene tree
 			tile.hide()
 	$FlipButton.hide()
 	$ReviveButton.hide()
-	$PassButton.hide()
+	$SkipButton.hide()
 	$PlayAgain.hide()
 	$MainMenu.hide()
 	$EndingDisplay.text = ""
@@ -130,7 +130,7 @@ func _on_Tile_clicked(clickedTile): # runs when a tile is clicked
 				if (oppositePawn.color != get_node(currentPawn).color): # if the opposite pawn is a different color
 					# show buttons for flip to kill
 					$FlipButton.show()
-					$PassButton.show()
+					$SkipButton.show()
 					yield(self, "buttonsFinished") # wait for the buttons function to finish
 				else: # the opposite pawn is the same color
 					call_deferred("revive") # calling the revive function, this makes sure that the player should be allowed to revive
@@ -227,7 +227,7 @@ func _on_FlipButton_pressed(): # when the flip to kill option is chosen
 	
 	# hides buttons and emits signals saying that the buttons are done
 	$FlipButton.hide()
-	$PassButton.hide()
+	$SkipButton.hide()
 	emit_signal("buttonsFinished", "flipped")
 
 func _on_ReviveButton_pressed(): # when the revive options is chosen
@@ -268,15 +268,15 @@ func _on_ReviveButton_pressed(): # when the revive options is chosen
 	
 	# hides buttons and emits the signal saying that the buttons are done
 	$ReviveButton.hide()
-	$PassButton.hide()
+	$SkipButton.hide()
 	emit_signal("buttonsFinished", "revived")
 
-func _on_PassButton_pressed(): # if the player chooses to pass instead of flipping
+func _on_SkipButton_pressed(): # if the player chooses to skip instead of flipping
 	# hides all the buttons and emits the signal saying that the buttons are done
 	$FlipButton.hide()
 	$ReviveButton.hide()
-	$PassButton.hide()
-	emit_signal("buttonsFinished", "passed")
+	$SkipButton.hide()
+	emit_signal("buttonsFinished", "skipped")
 
 func _on_PlayAgain_pressed():
 	get_tree().reload_current_scene()

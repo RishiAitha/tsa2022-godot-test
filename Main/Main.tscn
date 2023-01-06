@@ -420,12 +420,12 @@ margin_right = 896.0
 margin_bottom = 512.0
 text = "Flip to Revive!"
 
-[node name="PassButton" type="Button" parent="."]
+[node name="SkipButton" type="Button" parent="."]
 margin_left = 768.0
 margin_top = 320.0
 margin_right = 896.0
 margin_bottom = 384.0
-text = "Pass"
+text = "Skip"
 
 [node name="PlayAgain" type="Button" parent="."]
 margin_left = 448.0
@@ -552,6 +552,6 @@ align = 1
 [connection signal="pressed" from="RollButton" to="." method="_on_RollButton_pressed"]
 [connection signal="pressed" from="FlipButton" to="." method="_on_FlipButton_pressed"]
 [connection signal="pressed" from="ReviveButton" to="." method="_on_ReviveButton_pressed"]
-[connection signal="pressed" from="PassButton" to="." method="_on_PassButton_pressed"]
+[connection signal="pressed" from="SkipButton" to="." method="_on_SkipButton_pressed"]
 [connection signal="pressed" from="PlayAgain" to="." method="_on_PlayAgain_pressed"]
 [connection signal="pressed" from="MainMenu" to="." method="_on_MainMenu_pressed"]
