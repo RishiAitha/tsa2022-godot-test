@@ -3,18 +3,15 @@
 #	||---------------------------------------------------------------||
 #	
 #	Current Known Issues (commented where location of issue is known):
-#		"opposite tile check" to see whether or not to run flip to kill is failing and switching to revive for some unknown reason
-#		(or could be an issue with displaying the wrong buttons)
-#		
-#		getting null currentPawn when swapping positions
+#		none! (for now)
 #	
 #	||---------------------------------------------------------------||
 #	
 #	To-Do:
-#		Implement game over
 #		Start menu (maybe choosing amount of players)
 #		Make functions and instance vars more organized, delete excess
 #		Sprites and animation
+#		How to play
 #		Add comments to code (again, I'll probably forget)
 #		Lots of testing & bug fixes
 #		Change testing values to release values
@@ -60,6 +57,9 @@ func _ready(): # ryns when the main scene is initialized into the scene tree
 	$FlipButton.hide()
 	$ReviveButton.hide()
 	$PassButton.hide()
+	$PlayAgain.hide()
+	$MainMenu.hide()
+	$EndingDisplay.text = ""
 
 func _process(_delta): # runs every frame
 	$TurnDisplay.text = "Current Turn: " + currentPlayer # displays the current player at all times
@@ -82,6 +82,8 @@ func _on_Pawn_clicked(clickedPawn): # runs when the pawn is clicked
 			var checkTile = tileCheck(clickedPawn) # tile that the pawn is on
 			
 			# calculating the possible movement option tiles
+			# note for later: when showing the valid tile sprites, make sure they show corresponding to the selected pawn and only if the tile is not covered by another pawn of the same color
+			# (basically, only change the sprite of tiles that can actually be moved to for the selected pawn)
 			var tileNum
 			var backNum
 			var forNum
@@ -112,8 +114,6 @@ func _on_Tile_clicked(clickedTile): # runs when a tile is clicked
 			
 			moved = true # move is over, so set to true
 		elif (get_node(currentPawn).color != tilePawn.color): # there is a pawn on the tile that is being moved too
-			# ^^^ error: null value sometimes for unknown reason
-			
 			# swapping the piece positions
 			var temp_pos = tilePawn.position
 			tilePawn.position = get_node(currentPawn).position
@@ -128,15 +128,12 @@ func _on_Tile_clicked(clickedTile): # runs when a tile is clicked
 			
 			if (oppositePawn != null): # if the opposite pawn exists
 				if (oppositePawn.color != get_node(currentPawn).color): # if the opposite pawn is a different color
-					# ^^^ error: failing sometimes for no reason
-					
 					# show buttons for flip to kill
 					$FlipButton.show()
 					$PassButton.show()
 					yield(self, "buttonsFinished") # wait for the buttons function to finish
 				else: # the opposite pawn is the same color
-					revive() # calling the revive function, this makes sure that the player should be allowed to revive
-					# no yield is needed here because it is already in the revive
+					call_deferred("revive") # calling the revive function, this makes sure that the player should be allowed to revive
 			
 			updateColors() # updates which players still remain because pawns may have been killed
 			
@@ -149,17 +146,21 @@ func _on_Tile_clicked(clickedTile): # runs when a tile is clicked
 					lastPlayer = color
 			
 			# updating the cycles if the last player has moved
-			if (currentPlayer == lastPlayer):
+			if (currentIndex >= colors.find(lastPlayer)):
 				cycles += 1
 			
 			# if the round is over
 			if (cycles >= 1): # change to 3 after testing
-				yield(get_tree().create_timer(1), "timeout") # just to see what's happening easier
+				$RollButton.hide()
+				yield(get_tree().create_timer(1), "timeout") # just to see what's happening easier, will replace with animations
 				
 				# updating values
 				cycles = 0
-				gameRound += 1
 				tileCount -= 8
+				gameRound += 1
+				
+				if (gameRound > 4): # if there are no more rounds left, it should be a draw
+					call_deferred("gameOver", "roundsOver")
 				
 				# killing pawns that are on unsafe squares
 				var tiles = get_tree().get_nodes_in_group("all_tiles")
@@ -187,6 +188,8 @@ func _on_Tile_clicked(clickedTile): # runs when a tile is clicked
 							if (((pawn.color in tile.spawn) || tile.spawn == "everything") && pawnCheck(tile.name) == null && tileRound == gameRound):
 								pawn.position = tile.position
 								break
+				
+				$RollButton.show()
 			
 			# incrementing the current player at the end of a move, after everything has been updated and is ready for the next turn
 			var increment = 0
@@ -206,7 +209,7 @@ func revive(): # called to check if the revive should happen or not (technically
 	for forPawn in pawns:
 		if (forPawn.color == pawn.color && !forPawn.is_queued_for_deletion()):
 			colorCount += 1
-	if (colorCount < 4):
+	if (colorCount < 4 && gameRound < 4): # you can't revive on the last round
 		$ReviveButton.show() # shows the option to revive if there is space for another pawn of the color
 		yield(self, "buttonsFinished") # waits for the button function to be done
 
@@ -241,14 +244,25 @@ func _on_ReviveButton_pressed(): # when the revive options is chosen
 		newPawn.name = pawn.color + str(colorCount + 1)
 		newPawn.color = pawn.color
 		newPawn.connect("clicked", self, "_on_Pawn_clicked")
+		var defaultPos = Vector2(0, 0)
+		newPawn.position = defaultPos
 		
 		# sets the new pawn's starting position
 		for tile in tiles:
 			var tileRound = int(tile.name.get_slice("-", 0))
 			if (((pawn.color in tile.spawn) || tile.spawn == "everything") && pawnCheck(tile.name) == null && tileRound == gameRound):
 				newPawn.position = tile.position
-				add_child(newPawn)
 				break
+		
+		if (newPawn.position == defaultPos):
+			for tile in tiles:
+				var tileRound = int(tile.name.get_slice("-", 0))
+				if (pawnCheck(tile.name) == null && tileRound == gameRound):
+					newPawn.position = tile.position
+					break
+		
+		if (newPawn.position != defaultPos):
+			add_child(newPawn)
 	else:
 		$FlipDisplay.text = "Flip: Tails :("
 	
@@ -263,6 +277,15 @@ func _on_PassButton_pressed(): # if the player chooses to pass instead of flippi
 	$ReviveButton.hide()
 	$PassButton.hide()
 	emit_signal("buttonsFinished", "passed")
+
+func _on_PlayAgain_pressed():
+	get_tree().reload_current_scene()
+	emit_signal("buttonsFinished", "playagain")
+
+func _on_MainMenu_pressed():
+	$PlayAgain.hide()
+	$MainMenu.hide()
+	emit_signal("buttonsFinished", "mainmenu")
 
 func pawnCheck(tile): # gets the pawn on the given tile name, if it doesn't exist, then it returns null
 	var pawns = get_tree().get_nodes_in_group("all_pawns")
@@ -296,11 +319,40 @@ func updateColors(): # updates the current players based on if there are any paw
 				colorsLeft[3] = true
 	
 	# updates the remaining colors array based on which players are alive
+	# also counts the amount of remaining players left in the game
 	var i = 0
+	var remainingPlayers = 0
 	for color in colorsLeft:
 		if (color == false):
 			colors[i] = "dead"
+		else:
+			remainingPlayers += 1
 		i += 1
+	
+	if (remainingPlayers == 1): # if there is one player left, they win
+		call_deferred("gameOver", "winner")
+	elif (remainingPlayers == 0): # if there are no players left, it is a draw
+		call_deferred("gameOver", "allDead")
 
-func game_over(reason): # called when the game ends, taking the reason that the game ended
-	print_debug(str(reason))
+func gameOver(reason): # called when the game ends, taking the reason that the game ended
+	$RollButton.hide()
+	
+	for child in self.get_children():
+		child.hide()
+	
+	$EndingDisplay.show()
+	if (reason == "winner"):
+		var winner = ""
+		for color in colors:
+			if (color != "dead"):
+				winner = color
+		$EndingDisplay.text = "Winner: " + winner
+	elif (reason == "allDead"):
+		$EndingDisplay.text = "Draw: Everyone Ran Out of Pawns"
+	elif (reason == "roundsOver"):
+		$EndingDisplay.text = "Draw: Last Round Ended Without a Winner"
+	
+	$PlayAgain.show()
+	$MainMenu.show()
+	
+	yield(self, "buttonsFinished")

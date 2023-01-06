@@ -217,7 +217,7 @@ spawn = "Yellow"
 
 [node name="2-15" parent="." instance=ExtResource( 1 )]
 position = Vector2( 352, 480 )
-opposite_tile = "2-15"
+opposite_tile = "2-2"
 spawn = "Yellow"
 safe = false
 
@@ -427,6 +427,20 @@ margin_right = 896.0
 margin_bottom = 384.0
 text = "Pass"
 
+[node name="PlayAgain" type="Button" parent="."]
+margin_left = 448.0
+margin_top = 192.0
+margin_right = 576.0
+margin_bottom = 256.0
+text = "Play Again!"
+
+[node name="MainMenu" type="Button" parent="."]
+margin_left = 448.0
+margin_top = 320.0
+margin_right = 576.0
+margin_bottom = 384.0
+text = "Main Menu"
+
 [node name="RollDisplay" type="Label" parent="."]
 margin_left = 200.0
 margin_top = 48.0
@@ -447,6 +461,13 @@ margin_top = 48.0
 margin_right = 688.0
 margin_bottom = 72.0
 text = "Flip"
+
+[node name="EndingDisplay" type="Label" parent="."]
+margin_left = 464.0
+margin_top = 576.0
+margin_right = 560.0
+margin_bottom = 600.0
+align = 1
 
 [connection signal="clicked" from="1-1" to="." method="_on_Tile_clicked"]
 [connection signal="clicked" from="1-2" to="." method="_on_Tile_clicked"]
@@ -532,3 +553,5 @@ text = "Flip"
 [connection signal="pressed" from="FlipButton" to="." method="_on_FlipButton_pressed"]
 [connection signal="pressed" from="ReviveButton" to="." method="_on_ReviveButton_pressed"]
 [connection signal="pressed" from="PassButton" to="." method="_on_PassButton_pressed"]
+[connection signal="pressed" from="PlayAgain" to="." method="_on_PlayAgain_pressed"]
+[connection signal="pressed" from="MainMenu" to="." method="_on_MainMenu_pressed"]
