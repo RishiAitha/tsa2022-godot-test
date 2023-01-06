@@ -6,14 +6,12 @@
 
 Current Known Issues (commented where location of issue is known):
 
- - "opposite tile check" to see whether or not to run flip to kill is failing and switching to revive for some unknown reason
-	 - (or could be an issue with displaying the wrong buttons)
+ - none! (for now)
 
 ||---------------------------------------------------------------||
 
 To-Do:
 
- - Implement game over
  - Start menu (maybe choosing amount of players)
  - Make functions and instance vars more organized, delete excess
  - Sprites and animation
